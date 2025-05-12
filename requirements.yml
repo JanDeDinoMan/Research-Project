@@ -1,0 +1,17 @@
+name: trefide_devel
+channels:
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - mkl-devel
+  - cython
+  - scikit-learn
+  - jupyter
+  - matplotlib
+  - h5py
+  - pip
+  - pip:
+      - opencv-python-headless
+      - bioio
+      - bioio-tifffile
