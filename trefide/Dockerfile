@@ -1,4 +1,4 @@
-FROM ubuntu:24.04 as builder
+FROM ubuntu:18.04 as builder
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
@@ -29,25 +29,19 @@ WORKDIR /root/trefide
 
 RUN bash -c "make clean; make all -j $(nproc); pip install ."
 
+FROM ubuntu:18.04
 
-from ubuntu:24.04
-
-#COPY --from=builder /usr/local /usr/local
-COPY --from=builder /opt/conda /opt/conda
+COPY --from=builder /opt /opt
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-#    libsm6 \
     ffmpeg \
-#    libxext6 \
-#    libxrender-dev \
     && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /root/trefide
 
 ENV PATH /opt/conda/bin:$PATH
 ENV CONDA_PREFIX=/opt/conda
 ENV PATH=$CONDA_PREFIX/bin:$PATH
 
+WORKDIR /root/trefide
 
 EXPOSE 3000
 

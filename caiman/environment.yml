@@ -1,0 +1,21 @@
+name: caiman-env
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.9
+  - caiman=1.11.4
+#  - jupyter
+#  - matplotlib
+#  - pandas
+#  - scikit-image
+#  - opencv
+#  - numpy
+#  - scipy
+#  - h5py
+#  - numba
+#  - dask
+#  - tqdm
+#  - pip
+#  - pip:
+#      - moviepy
